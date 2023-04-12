@@ -20,12 +20,14 @@ const slides = [
 
 
 
-const items = document.querySelectorAll('banner-img');
-const nbslide = items.length;
-const flechedroite = document.querySelector('.arrow-left');
-const flechegauche = document.querySelector('.arrow_right');
-let arrow = document.querySelector('.arrow-left');
-let arrow = document.querySelector('.arrow-left');
 
+let arrow_left = document.querySelector('.arrow_left')
+let arrow_right = document.querySelector('.arrow_left')
 
-arrow.addEventListener('click', function () { alert('fleche gauche') });
+arrow_left.addEventListener('click', function () {
+	alert('fleche gauche')
+})
+
+arrow_right.addEventListener('click', function () {
+	alert('fleche droite')
+})

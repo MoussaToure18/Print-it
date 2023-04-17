@@ -16,8 +16,28 @@ const slides = [
 		"tagLine": "Autocollants <span>avec découpe laser sur mesure</span>"
 	}
 ]
+let courantslides = 0
+function dots() {
+	let dots = ""
+	for (let i = 0; i < slides.length; i++) {
 
 
+		if (courantslides == i) {
+			dots += "<span class='dot dot_selected'></span>"
+		}
+		else {
+			dots += "<span class='dot'></span>"
+		}
+	}
+
+	let slidesHTML = document.querySelector('.dots')
+	slidesHTML.innerHTML = dots
+
+}
+
+dots()
+
+let p = document.querySelector('#banner p')
 
 
 
@@ -25,20 +45,35 @@ let arrow_left = document.querySelector('.arrow_left')
 let arrow_right = document.querySelector('.arrow_right')
 
 let img = document.querySelector('.banner-img')
-let courantslides = 0
+
 
 
 arrow_left.addEventListener('click', function () {
 	/*alert('fleche gauche')*/
 	courantslides = courantslides - 1 //courantslide-- 
+	if (courantslides < 0) {
+		courantslides = 3
+	}
+
 	img.src = './assets/images/slideshow/' + slides[courantslides].image
+	p.innerHTML = slides[courantslides].tagLine
+	dots()
+
+
+
 
 })
 
 arrow_right.addEventListener('click', function () {
 	/*alert('fleche droite')*/
 	courantslides = courantslides + 1 //courantslide++ 
+	if (courantslides > 3) {
+		courantslides = 0
+	}
 	img.src = './assets/images/slideshow/' + slides[courantslides].image
+	p.innerHTML = slides[courantslides].tagLine
+	dots()
+
 });
 
 
@@ -64,20 +99,6 @@ let count = 0;
 
 
 
-let dots = ""
-for (let i = 0; i < slides.length; i++) {
-
-
-	if (courantslides == i) {
-		dots += "<span class='dot dot_selected'></span>"
-	}
-	else {
-		dots += "<span class='dot'></span>"
-	}
-}
-
-let slidesHTML = document.querySelector('.dots')
-slidesHTML.innerHTML = dots
 
 /*let img = 1
 
